@@ -1,0 +1,61 @@
+.cardContainer {
+  width: 274px;
+  height: 426px;
+  position: relative;
+}
+
+.carImage {
+  width: 100%;
+  height: 268px;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+.carInfo {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 14px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.infoText {
+  color: var(--dark-navy-90, #121417);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+}
+
+.rentalPrice {
+  color: var(--dark-navy-90, #121417);
+}
+
+.detailsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 8px;
+  font-size: 12px;
+  color: rgba(18, 20, 23, 0.5);
+  list-style: none;
+  padding: 0;
+}
+
+.learnMoreButton {
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  background-color: var(--button, #3470ff);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  margin-top: 28px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.learnMoreButton:hover {
+  background-color: var(--button-hover, #0b44cd);
+}

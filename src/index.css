@@ -9,6 +9,7 @@
   --badges: #f2f4f7;
   --inputs: #f7f7f7;
   --white: #fff;
+  --main: #101828;
 }
 
 *,
@@ -39,7 +40,7 @@ body {
   height: 100%;
   font-family: "Manrope", sans-serif;
   box-sizing: border-box;
-  overflow-y: hidden;
+  /* overflow-y: hidden; */
 }
 
 #root {
