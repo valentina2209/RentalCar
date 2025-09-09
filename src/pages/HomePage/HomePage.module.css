@@ -1,0 +1,59 @@
+.homePageContainer {
+  background: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.2) 0%,
+      rgba(0, 0, 0, 0.2) 100%
+    ),
+    url("/Banner-car.jpg") lightgray 50% / cover no-repeat;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  padding-bottom: 60px;
+}
+
+.title {
+  color: var(--white, #fff);
+  text-align: center;
+  font-family: Manrope;
+  font-size: 60px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 72px;
+  margin-bottom: 16px;
+}
+
+.subtitle {
+  color: var(--white, #fff);
+  text-align: center;
+  font-family: Manrope;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 32px;
+  margin-bottom: 40px;
+}
+
+.actionButton {
+  border: none;
+  display: flex;
+  padding: 12px 99px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  background: var(--button, #3470ff);
+  color: var(--white, #fff);
+  font-family: Manrope;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px;
+  margin-bottom: 60px;
+}
+
+.actionButton:hover {
+  background-color: var(--button-hover);
+}

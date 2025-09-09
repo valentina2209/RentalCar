@@ -1,0 +1,39 @@
+.header {
+  display: flex;
+  padding: 24px 120px;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--badges, #f2f4f7);
+  background: var(--badges, #f2f4f7);
+}
+.logo a {
+  text-decoration: none;
+}
+.logoSvg {
+  height: 16px;
+  width: auto;
+}
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.link,
+.activeLink {
+  text-decoration: none;
+  color: var(--main, #101828);
+  text-align: center;
+  font-family: Manrope;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.link:hover {
+  color: var(--button-hover);
+}
+
+.activeLink {
+  color: var(--button);
+}

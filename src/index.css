@@ -14,9 +14,9 @@
 *,
 ::before,
 ::after {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 a {
@@ -30,43 +30,20 @@ ul {
   list-style: none;
 }
 
+html,
 body {
   font-family: var(--font-family);
   background-color: var(--white);
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: "Manrope", sans-serif;
+  box-sizing: border-box;
+  overflow-y: hidden;
 }
 
 #root {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-}
-.container {
-  width: 100%;
-  margin: 0 auto;
-}
-
-@media only screen and (max-width: 392.5px) {
-  .container {
-    padding: 8px;
-  }
-}
-@media only screen and (min-width: 393px) {
-  .container {
-    padding: 16px;
-    max-width: 393px;
-  }
-}
-
-@media only screen and (min-width: 768px) {
-  .container {
-    padding: 0 32px;
-    max-width: 768px;
-  }
-}
-
-@media only screen and (min-width: 1440px) {
-  .container {
-    padding: 0 108px;
-    max-width: 1440px;
-  }
 }
