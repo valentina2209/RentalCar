@@ -1,20 +1,37 @@
 import { Link } from "react-router-dom";
-import styles from "./CarCard.module.css";
+import css from "./CarCard.module.css";
 
 export default function CarCard({ car }) {
-    const { id, make, model, year, rentalPrice, mileage, img } = car;
+    const { id, year, brand, model, img, rentalPrice, rentalCompany, type, mileage, } = car;
+
+    const addressParts = car.address.split(', ');
+    const city = addressParts[1];
+    const country = addressParts[2];
 
     return (
-        <div className={styles.card}>
-            <img src={img} alt={`${make} ${model}`} className={styles.image} />
-            <div className={styles.info}>
-                <h3>{make} {model}, {year}</h3>
-                <p>Price: {rentalPrice}</p>
-                <p>Mileage: {mileage.toLocaleString()} km</p>
-                <Link to={`/catalog/${id}`} className={styles.link}>
-                    Read more
-                </Link>
+        <div className={css.cardContainer}>
+            <div className={css.imageWrapper}>
+                <img src={img} alt={`${brand} ${model}`} className={css.carImage} />
             </div>
+
+            <div className={css.carInfo}>
+                <div className={css.wrapper}>
+                    <h3 className={css.infoText}>
+                        <span className={css.brand}>{brand} </span>
+                        <span className={css.model}> {model}</span>,{year}
+                    </h3>
+                    <p className={css.rentalPrice}> ${rentalPrice}</p>
+                </div>
+
+
+                <p className={css.detailsList}> {city} | {country} | {rentalCompany} | </p>
+                <p className={css.description}> {type} | {mileage.toLocaleString('en-US')} km</p>
+            </div>
+
+            <Link to={`/catalog/${id}`} className={css.link}>
+                Read more
+            </Link>
         </div>
     );
 }
+

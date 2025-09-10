@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  padding: 0px 120px;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+  flex-grow: 1;
+  margin-bottom: 80px;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  align-items: stretch;
+  flex-grow: 1;
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.items {
+  width: calc((100% - 128px) / 4);
+  flex-grow: 0;
+}
