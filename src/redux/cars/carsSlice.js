@@ -6,7 +6,6 @@ const initialFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
 const initialState = {
     items: [],
     favorites: initialFavorites,
-
     isLoading: false,
     error: null,
     filters: {
@@ -40,6 +39,11 @@ const carsSlice = createSlice({
             state.page = 1;
             state.hasMore = true;
         },
+        loadMore(state) {
+            if (state.hasMore) {
+                state.page += 1;
+            }
+        },
     },
     extraReducers: (builder) => {
         builder
@@ -49,26 +53,14 @@ const carsSlice = createSlice({
             })
             .addCase(fetchCars.fulfilled, (state, action) => {
                 state.isLoading = false;
-                const newCars = action.payload.cars;
+                const newCars = action.payload.cars || [];
 
                 if (Array.isArray(newCars)) {
-                    const uniqueNewCars = newCars.filter(
-                        (newCar) =>
-                            !state.items.some((existingCar) => existingCar.id === newCar.id)
-                    );
-                    state.items = [...state.items, ...uniqueNewCars];
-                    state.hasMore = uniqueNewCars.length > 0;
-                    if (state.hasMore) {
-                        state.page += 1;
-                    }
 
-                    const allBrands = state.items.map((car) => car.brand);
-                    state.uniqueBrands = [...new Set(allBrands)];
+                    state.items = [...state.items, ...newCars]
 
-                    const allPrices = state.items.map((car) => parseInt(car.rentalPrice.replace("$", "")));
-                    state.uniquePrices = [...new Set(allPrices)].sort((a, b) => a - b);
-                } else {
-                    console.error("Отримані дані не є масивом:", action.payload);
+                    const limit = 12;
+                    state.hasMore = newCars.length === limit;
                 }
             })
             .addCase(fetchCars.rejected, (state, action) => {
@@ -77,13 +69,12 @@ const carsSlice = createSlice({
             })
             .addCase(fetchCarById.fulfilled, (state, action) => {
                 const car = action.payload;
-                if (!state.allCars.some((item) => item.id === car.id)) {
-                    state.allCars.push(car);
-                    state.filteredCars.push(car);
+                if (!state.items.some((item) => item.id === car.id)) {
+                    state.items.push(car);
                 }
             })
     },
 });
 
-export const { setFilters, resetCars, toggleFavorite } = carsSlice.actions;
+export const { setFilters, toggleFavorite, loadMore } = carsSlice.actions;
 export const carsReducer = carsSlice.reducer;

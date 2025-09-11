@@ -1,0 +1,29 @@
+// Виправлений carsSlice.js
+// ...
+extraReducers: (builder) => {
+    builder
+        .addCase(fetchCars.pending, (state) => {
+            state.isLoading = true;
+            state.error = null;
+        })
+        .addCase(fetchCars.fulfilled, (state, action) => {
+            state.isLoading = false;
+            // ✅ Виправлення: отримуємо масив з action.payload.cars
+            const newCars = action.payload.cars || [];
+            
+            if (Array.isArray(newCars)) {
+                // Додаємо нові автомобілі до існуючого списку
+                state.items = [...state.items, ...newCars];
+                
+                // Оновлюємо hasMore
+                const limit = 12; 
+                state.hasMore = newCars.length === limit;
+            }
+        })
+        .addCase(fetchCars.rejected, (state, action) => {
+            state.isLoading = false;
+            state.error = action.payload;
+        })
+        // ...
+},
+// ...
