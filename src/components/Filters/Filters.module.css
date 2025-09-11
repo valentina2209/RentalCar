@@ -49,11 +49,10 @@
   outline: none;
 }
 .selectField {
-  outline: none; /* Прибираємо чорну рамку фокусу */
+  outline: none;
 }
 
 select {
-  /* Видаляємо стандартну чорну рамку та стрілку */
   outline: none;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -61,11 +60,11 @@ select {
 }
 
 .icon {
-  position: absolute; /* Позиціонуємо іконку абсолютно */
-  top: 70%; /* Вирівнюємо по центру по вертикалі */
-  right: 18px; /* Відступ від правого краю */
-  transform: translateY(-50%); /* Точне вирівнювання по центру */
-  pointer-events: none; /* Це дозволить клікам проходити крізь іконку */
+  position: absolute;
+  top: 70%;
+  right: 18px;
+  transform: translateY(-50%);
+  pointer-events: none;
   width: 16px;
   height: 16px;
   flex-shrink: 0;

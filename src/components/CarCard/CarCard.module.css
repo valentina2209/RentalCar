@@ -4,31 +4,50 @@
   justify-content: space-between;
   height: 100%;
   overflow: hidden;
-  /* align-items: flex-start;
-  flex-grow: 1; */
 }
 
 .imageWrapper {
   width: 100%;
-  aspect-ratio: 4 / 3; /* співвідношення сторін (як у макеті) */
+  aspect-ratio: 4 / 3;
   border-radius: 14px;
   overflow: hidden;
   margin-bottom: 16px;
+  position: relative;
 }
 .carImage {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-
-  /* width: 276px;
-  height: 268px; */
   border-radius: 14px;
   background: linear-gradient(
     180deg,
     rgba(18, 20, 23, 0.5) 2.5%,
     rgba(18, 20, 23, 0) 41.07%
   );
+}
+.favoritesBtn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 20px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.favoritesBtn .icon {
+  width: 24px;
+  height: 24px;
+  fill: transparent; /* Колір заповнення іконки прозорий */
+  stroke: #fff; /* Білий контур для неактивного сердечка */
+  stroke-width: 2px; /* Товщина контуру */
+  transition: fill 0.3s ease, stroke 0.3s ease; /* Додаємо анімацію для контуру */
+}
+
+.favoritesBtn.active .icon {
+  fill: #3470ff; /* Активний колір заповнення */
+  stroke: #3470ff; /* Колір контуру також стає активним */
 }
 .carInfo {
   display: flex;

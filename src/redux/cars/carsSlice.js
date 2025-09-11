@@ -1,8 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchCars } from "./carsOperations";
+import { fetchCars, fetchCarById } from "./carsOperations";
+
+const initialFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
 
 const initialState = {
     items: [],
+    favorites: initialFavorites,
+
     isLoading: false,
     error: null,
     filters: {
@@ -21,6 +25,15 @@ const carsSlice = createSlice({
     name: "cars",
     initialState,
     reducers: {
+        toggleFavorite: (state, action) => {
+            const carId = action.payload;
+            if (state.favorites.includes(carId)) {
+                state.favorites = state.favorites.filter(id => id !== carId);
+            } else {
+                state.favorites.push(carId);
+            }
+            localStorage.setItem("favorites", JSON.stringify(state.favorites));
+        },
         setFilters(state, action) {
             state.filters = action.payload;
             state.items = [];
@@ -36,10 +49,6 @@ const carsSlice = createSlice({
             })
             .addCase(fetchCars.fulfilled, (state, action) => {
                 state.isLoading = false;
-
-                // Виправляємо помилку: отримуємо масив з action.payload
-                // Згідно з вашими логами, масив знаходиться в action.payload.cars або action.payload.adverts
-                // Спробуємо обидва варіанти, але, швидше за все, це cars.
                 const newCars = action.payload.cars;
 
                 if (Array.isArray(newCars)) {
@@ -65,9 +74,16 @@ const carsSlice = createSlice({
             .addCase(fetchCars.rejected, (state, action) => {
                 state.isLoading = false;
                 state.error = action.payload;
-            });
+            })
+            .addCase(fetchCarById.fulfilled, (state, action) => {
+                const car = action.payload;
+                if (!state.allCars.some((item) => item.id === car.id)) {
+                    state.allCars.push(car);
+                    state.filteredCars.push(car);
+                }
+            })
     },
 });
 
-export const { setFilters, resetCars } = carsSlice.actions;
+export const { setFilters, resetCars, toggleFavorite } = carsSlice.actions;
 export const carsReducer = carsSlice.reducer;

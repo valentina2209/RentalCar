@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { fetchCarById } from "../../redux/cars/carsOperations";
+import BookingForm from "../../components/BookingForm/BookingForm";
 import css from "./CarDetailsPage.module.css";
 
 const CarDetailsPage = () => {
@@ -38,13 +39,17 @@ const CarDetailsPage = () => {
 
     return (
         <div className={css.carDetailsContainer}>
-            <div className={css.imageWrapper}>
-                <img
-                    src={car.img}
-                    alt={`${car.brand} ${car.model}`}
-                    className={css.carImage}
-                />
+            <div className={css.formWrapper}>
+                <div className={css.imageWrapper}>
+                    <img
+                        src={car.img}
+                        alt={`${car.brand} ${car.model}`}
+                        className={css.carImage}
+                    />
+                </div>
+                <BookingForm />
             </div>
+
 
             <div className={css.descriptionWrapper}>
 
@@ -75,8 +80,6 @@ const CarDetailsPage = () => {
                                 ))}
                         </ul>
                     </section>
-
-                    {/* Car Specifications */}
                     <section>
                         <h3 className={css.subtitle}>Car Specifications:</h3>
                         <ul className={css.list}>
@@ -118,8 +121,6 @@ const CarDetailsPage = () => {
                             </li>
                         </ul>
                     </section>
-
-                    {/* Accessories and functionalities */}
                     <section>
                         <h3 className={css.subtitle}>Accessories and functionalities:</h3>
                         <ul className={css.list}>
@@ -135,8 +136,6 @@ const CarDetailsPage = () => {
 
 
             </div>
-
-
 
         </div>
     );

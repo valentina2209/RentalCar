@@ -1,7 +1,9 @@
-import React from 'react';
+import { ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from './redux/store';
+
 
 import HomePage from './pages/HomePage/HomePage';
 import Header from './components/Header/Header';
@@ -18,6 +20,7 @@ export default function App() {
                     <Route path="/catalog" element={<CatalogPage />} />
                     <Route path="/catalog/:id" element={<CarDetailsPage />} />
                 </Routes>
+                <ToastContainer />
             </BrowserRouter>
         </Provider>
     );
