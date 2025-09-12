@@ -6,11 +6,8 @@ import {
     selectCars,
     selectFilters,
     selectIsLoading,
-    // selectPage,
-    // selectTotalPages,
-
 } from "../../redux/cars/carsSelectors";
-import styles from "./CatalogPage.module.css";
+import Loader from "../../components/Loader/Loader";
 
 import CarList from "../../components/CarList/CarList";
 import Filters from "../../components/Filters/Filters";
@@ -20,8 +17,6 @@ export default function CatalogPage() {
     const dispatch = useDispatch();
     const cars = useSelector(selectCars);
     const filters = useSelector(selectFilters);
-    // const page = useSelector(selectPage);
-    // const totalPages = useSelector(selectTotalPages);
     const isLoading = useSelector(selectIsLoading);
 
     useEffect(() => {
@@ -33,19 +28,13 @@ export default function CatalogPage() {
         dispatch(fetchCars({ page: 1, ...newFilters }));
     };
 
-    // const handleLoadMore = () => {
-    //     if (page < totalPages) {
-    //         dispatch(fetchCars({ page: page + 1, ...filters }));
-    //     }
-    // };
-
     return (
-        <div className={styles.catalogWrapper}>
+        <div>
             <Filters
                 onChange={handleFiltersChange}
             />
             <CarList cars={cars} />
-            {isLoading && <p>Loading...</p>}
+            {isLoading && <Loader />}
             <Pagination />
         </div>
     );

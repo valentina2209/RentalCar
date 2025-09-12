@@ -40,9 +40,7 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
-  font-family: "Manrope", sans-serif;
   box-sizing: border-box;
-  /* overflow-y: hidden; */
 }
 
 #root {

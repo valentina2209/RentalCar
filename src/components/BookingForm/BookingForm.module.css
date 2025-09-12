@@ -84,7 +84,6 @@ input::placeholder {
 .inputDate[type="date"] {
   text-align: left;
   color: var(--gray);
-  font-size: 16px;
 }
 
 .inputDate[type="date"]::-webkit-calendar-picker-indicator {

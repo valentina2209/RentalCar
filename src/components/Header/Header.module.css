@@ -5,6 +5,9 @@
   align-items: center;
   border-bottom: 1px solid var(--badges, #f2f4f7);
   background: var(--badges, #f2f4f7);
+  width: 100%;
+  z-index: 1;
+  position: fixed;
 }
 .logo a {
   text-decoration: none;

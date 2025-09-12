@@ -22,7 +22,7 @@ export default function Pagination() {
     };
 
     return (
-        <div>
+        <div className={css.paginationWrapper}>
             {hasMore && (
                 <button
                     onClick={handleLoadMore}
@@ -33,9 +33,7 @@ export default function Pagination() {
 
                 </button>
             )}
-            {!hasMore && !isLoading && (
-                <p className={css.endOfList}>All cars is loading.</p>
-            )}
+            {!hasMore && !isLoading}
         </div>
     )
 }

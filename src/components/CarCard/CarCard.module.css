@@ -5,7 +5,6 @@
   height: 100%;
   overflow: hidden;
 }
-
 .imageWrapper {
   width: 100%;
   aspect-ratio: 4 / 3;
@@ -35,19 +34,17 @@
   border: none;
   cursor: pointer;
 }
-
 .favoritesBtn .icon {
   width: 24px;
   height: 24px;
-  fill: transparent; /* Колір заповнення іконки прозорий */
-  stroke: #fff; /* Білий контур для неактивного сердечка */
-  stroke-width: 2px; /* Товщина контуру */
-  transition: fill 0.3s ease, stroke 0.3s ease; /* Додаємо анімацію для контуру */
+  fill: transparent;
+  stroke: #fff;
+  stroke-width: 2px;
+  transition: fill 0.3s ease, stroke 0.3s ease;
 }
-
 .favoritesBtn.active .icon {
-  fill: #3470ff; /* Активний колір заповнення */
-  stroke: #3470ff; /* Колір контуру також стає активним */
+  fill: #3470ff;
+  stroke: #3470ff;
 }
 .carInfo {
   display: flex;

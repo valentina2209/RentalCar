@@ -45,7 +45,6 @@ const BookingForm = () => {
                     className={css.inputName}
                     required
                 />
-
                 <input
                     type="email"
                     name="email"
@@ -55,9 +54,6 @@ const BookingForm = () => {
                     className={css.inputEmail}
                     required
                 />
-
-
-
                 <input
                     type="date"
                     name="bookingDate"
@@ -65,8 +61,6 @@ const BookingForm = () => {
                     onChange={formik.handleChange}
                     className={css.inputDate}
                 />
-
-
                 <textarea
                     name="comment"
                     value={formik.values.comment}
@@ -74,10 +68,7 @@ const BookingForm = () => {
                     placeholder="Comment"
                     className={css.textarea}
                 />
-
             </div>
-
-
             <button type="submit" className={css.buttonBooking}>Send</button>
         </form>
     );

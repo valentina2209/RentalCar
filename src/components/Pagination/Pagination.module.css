@@ -1,3 +1,9 @@
+.paginationWrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 124px;
+}
+
 .loadMoreBtn {
   color: var(--main, #101828);
   font-size: 16px;
@@ -6,8 +12,6 @@
   padding: 12px 51px;
   border-radius: 12px;
   border: 1px solid var(--button, #3470ff);
-  margin-bottom: 124px;
-  margin-left: 624px;
   outline: none;
   background-color: var(--white);
 }
@@ -19,6 +23,4 @@
   font-size: 16px;
   font-weight: 600;
   line-height: 20px;
-  margin-bottom: 124px;
-  margin-left: 624px;
 }

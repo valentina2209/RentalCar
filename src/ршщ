@@ -1,31 +1,22 @@
-import { useState } from 'react';
-// ... інші імпорти
+import Loader from "../../components/Loader/Loader";
 
-export default function Filters() {
-    // ... ваш існуючий код
-    const [isFocused, setIsFocused] = useState(false);
+// ...
 
-    return (
-        <div className={css.brand}>
-            <h2 className={css.title}>Car brand</h2>
-            {/* ✅ Додаємо клас, який залежить від стану фокуса */}
-            <svg className={`${css.icon} ${isFocused ? css.iconUp : ''}`}>
-                <use href="/icons.svg#icon-down-arrow" />
-            </svg>
-            <select
-                className={css.style}
-                value={brand}
-                onChange={(e) => setBrand(e.target.value)}
-                onFocus={() => setIsFocused(true)}  // ✅ Коли інпут отримує фокус, встановлюємо true
-                onBlur={() => setIsFocused(false)}   // ✅ Коли втрачає фокус, встановлюємо false
-            >
-                <option value="">Choose a brand</option>
-                {(brands || []).map((b) => (
-                    <option key={b} value={b}>
-                        {b}
-                    </option>
-                ))}
-            </select>
-        </div>
-    );
-}
+return (
+  <div className={styles.catalogWrapper}>
+    <Filters />
+
+    <CarList cars={cars} />
+
+    {isLoading && <Loader />} {/* показуємо крутилку */}
+
+    {hasMore && !isLoading && (
+      <button
+        className={styles.loadMoreBtn}
+        onClick={handleLoadMore}
+      >
+        Load more
+      </button>
+    )}
+  </div>
+);

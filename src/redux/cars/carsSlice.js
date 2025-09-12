@@ -60,25 +60,9 @@ const carsSlice = createSlice({
                 state.isLoading = true;
                 state.error = null;
             })
-            // .addCase(fetchCars.fulfilled, (state, action) => {
-            //     state.isLoading = false;
-            //     const newCars = action.payload.cars || [];
-
-            //     if (Array.isArray(newCars)) {
-
-            //         state.items = [...state.items, ...newCars]
-
-            //         const limit = 12;
-            //         state.hasMore = newCars.length === limit;
-            //     }
-            // })
             .addCase(fetchCars.fulfilled, (state, action) => {
                 state.isLoading = false;
                 const newCars = action.payload.cars || [];
-
-
-
-                // ✅ Додайте логіку для отримання унікальних брендів
                 if (state.uniqueBrands.length === 0) {
                     const allBrands = state.items.map(car => car.brand);
                     const uniqueBrandsSet = new Set(allBrands);
@@ -87,15 +71,9 @@ const carsSlice = createSlice({
                     const allPrices = state.items.map(car => car.rentalPrice);
                     const uniquePricesSet = new Set(allPrices);
                     state.uniquePrices = [...uniquePricesSet].sort((a, b) => a - b);
-
-
                 }
-
                 state.items = [...state.items, ...newCars];
                 state.hasMore = newCars.length === 12;
-
-
-
             })
             .addCase(fetchCars.rejected, (state, action) => {
                 state.isLoading = false;

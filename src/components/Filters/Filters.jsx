@@ -8,7 +8,6 @@ export default function Filters({ onChange }) {
     const [price, setPrice] = useState("");
     const [mileageFrom, setMileageFrom] = useState("");
     const [mileageTo, setMileageTo] = useState("");
-    // const [isFocused, setIsFocused] = useState(false);
 
     const brands = useSelector(selectUniqueBrands);
     const prices = useSelector(selectUniquePrices)
@@ -30,8 +29,6 @@ export default function Filters({ onChange }) {
                         className={css.style}
                         value={brand}
                         onChange={(e) => setBrand(e.target.value)}
-                    // onFocus={() => setIsFocused(true)}
-                    // onBlur={() => setIsFocused(false)}
                     >
                         <option value="">Choose a brand</option>
                         {(brands || []).map((b) => (

@@ -1,9 +1,9 @@
 .wrapper {
   display: flex;
   justify-content: center;
-  margin-top: 80px;
   margin-bottom: 56px;
   align-items: flex-end;
+  padding-top: 144px;
 }
 
 .container {
@@ -51,6 +51,9 @@
 .selectField {
   outline: none;
 }
+option:checked {
+  font-weight: bold;
+}
 
 select {
   outline: none;
@@ -69,22 +72,7 @@ select {
   height: 16px;
   flex-shrink: 0;
   fill: var(--main);
-  /* transition: transform 0.3s ease; */
 }
-
-/* .iconUp {
-  position: absolute;
-  top: 70%;
-  right: 18px;
-  transform: translateY(-50%);
-  pointer-events: none;
-  width: 16px;
-  height: 16px;
-  flex-shrink: 0;
-  fill: var(--main);
-  transform: rotate(180deg);
-} */
-
 .type:global(::placeholder) {
   color: var(--main, #101828);
   font-family: Manrope;
@@ -102,10 +90,9 @@ select {
   border-radius: 12px;
   background: var(--button, #3470ff);
   color: var(--white, #fff);
-  font-family: Manrope;
   font-size: 16px;
   font-weight: 600;
-  line-height: 20px;
+  line-height: 1.2;
   border: none;
 }
 
