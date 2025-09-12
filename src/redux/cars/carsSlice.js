@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchCars, fetchCarById } from "./carsOperations";
 
+
 const initialFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
 
 const initialState = {
@@ -17,7 +18,9 @@ const initialState = {
     uniqueBrands: [],
     uniquePrices: [],
     page: 1,
+    totalPages: 1,
     hasMore: true,
+
 };
 
 const carsSlice = createSlice({
@@ -38,6 +41,12 @@ const carsSlice = createSlice({
             state.items = [];
             state.page = 1;
             state.hasMore = true;
+            state.totalPages = 1;
+        },
+        resetCars(state) {
+            state.items = [];
+            state.page = 1;
+            state.totalPages = 1;
         },
         loadMore(state) {
             if (state.hasMore) {
@@ -51,17 +60,42 @@ const carsSlice = createSlice({
                 state.isLoading = true;
                 state.error = null;
             })
+            // .addCase(fetchCars.fulfilled, (state, action) => {
+            //     state.isLoading = false;
+            //     const newCars = action.payload.cars || [];
+
+            //     if (Array.isArray(newCars)) {
+
+            //         state.items = [...state.items, ...newCars]
+
+            //         const limit = 12;
+            //         state.hasMore = newCars.length === limit;
+            //     }
+            // })
             .addCase(fetchCars.fulfilled, (state, action) => {
                 state.isLoading = false;
                 const newCars = action.payload.cars || [];
 
-                if (Array.isArray(newCars)) {
 
-                    state.items = [...state.items, ...newCars]
 
-                    const limit = 12;
-                    state.hasMore = newCars.length === limit;
+                // ✅ Додайте логіку для отримання унікальних брендів
+                if (state.uniqueBrands.length === 0) {
+                    const allBrands = state.items.map(car => car.brand);
+                    const uniqueBrandsSet = new Set(allBrands);
+                    state.uniqueBrands = [...uniqueBrandsSet];
+
+                    const allPrices = state.items.map(car => car.rentalPrice);
+                    const uniquePricesSet = new Set(allPrices);
+                    state.uniquePrices = [...uniquePricesSet].sort((a, b) => a - b);
+
+
                 }
+
+                state.items = [...state.items, ...newCars];
+                state.hasMore = newCars.length === 12;
+
+
+
             })
             .addCase(fetchCars.rejected, (state, action) => {
                 state.isLoading = false;
@@ -76,5 +110,5 @@ const carsSlice = createSlice({
     },
 });
 
-export const { setFilters, toggleFavorite, loadMore } = carsSlice.actions;
+export const { setFilters, resetCars, toggleFavorite, loadMore } = carsSlice.actions;
 export const carsReducer = carsSlice.reducer;

@@ -6,3 +6,5 @@ export const selectPage = (state) => state.cars.page;
 export const selectHasMore = (state) => state.cars.hasMore;
 export const selectFavorites = (state) => state.cars.favorites;
 export const selectTotalPages = (state) => state.cars.totalPages;
+export const selectUniqueBrands = (state) => state.cars.uniqueBrands;
+export const selectUniquePrices = (state) => state.cars.uniquePrices;
